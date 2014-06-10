@@ -4,7 +4,7 @@ COMPLETE REWRITE USING CLASSES LATER, CURRENTLY FIRST PROTOTYPE IN ONE CLASS
 
 ### Todo
 - [ ] Add mouse control
-- [ ] Add the mouse highlighter, tile selector
+- [X] Add the mouse highlighter, tile selector
 - [ ] Add GUI for station selector
 - [ ] Add town tiles
 - [ ] Add train tracks

@@ -52,7 +52,7 @@ def main():
     cursorPos = [0, 0]
     mousex = 0                                                                                                                      # x coord of the mouse
     mousey = 0                                                                                                                      # y coord of the mouse
-    mouseClicked = None                                                                                                     # var to check state of the mouse button
+    mouseClicked = False                                                                                                     # var to check state of the mouse button
     
     # Images for the tile map
     textures = {
@@ -96,31 +96,33 @@ def main():
             # Mouse position 
             elif event.type == MOUSEMOTION:
                 mousex, mousey = event.pos
+                mousex = int(mousex/TILESIZE)
+                mousey = int(mousey/TILESIZE)
+                
                 if mousex >0 and mousex <= MAPWIDTH*TILESIZE:
-                    cursorPos[0] = int((mousex / TILESIZE)*10)
+                    cursorPos[0] = mousex
                 else:
                     cursorPos[0] = 0
                 if mousey > 0 and mousey <= MAPHEIGHT*TILESIZE:
-                    cursorPos[1] = int((mousey / TILESIZE)*10)
-                    print(cursorPos[0], " ", cursorPos[1])
+                    cursorPos[1] = mousey
                 else:
                     cursorPos[1] = 0
                 
             elif event.type == MOUSEBUTTONUP:
                 mousex, mousey = event.pos
+                mousex = int(mousex/TILESIZE)
+                mousey = int(mousey/TILESIZE)
+                
                 if mousex >0 and mousex <= MAPWIDTH*TILESIZE:
-                    cursorPos[0] = (mousex % TILESIZE)*10
-                    print("mouse x : ",mousex)
+                    cursorPos[0] = mousex
                 else:
                     cursorPos[0] = 0
                 if mousey > 0 and mousey <= MAPHEIGHT*TILESIZE:
-                    cursorPos[1] = (mousey % TILESIZE)
-                    print("mouse y: ", mousey)
+                    cursorPos[1] = mousey
                 else:
                     cursorPos[1] = 0
-                    
                 mouseClicked = True
-            
+
         # Places tiles on to the screen   
         for row in range(MAPHEIGHT ):
             for column in range(MAPWIDTH):
