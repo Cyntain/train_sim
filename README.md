@@ -1,11 +1,13 @@
 Pygame
 ==============
-COMPLETE REWRITE USING CLASSES LATER, CURRENTLY FIRST PROTOTYPE IN ONE CLASS 
+COMPLETE REWRITE USING CLASSES LATER (OOP), CURRENTLY FIRST PROTOTYPE IN ONE script
 
 ### Todo
-- [ ] Add mouse control
+- [X] Add mouse control
 - [X] Add the mouse highlighter, tile selector
-- [ ] Add GUI for station selector
-- [ ] Add town tiles
+- [X] Add the station tile, TODO: MAKE A BETTER STATION TILE
+- [ ] Add train track tile and make a tran track sprite (need code for connected tiles?)
+- [ ] Add GUI for station selector? kinda defects the mouse control on the tiles? design meeting needed.
+- [ ] Add town tiles? or more stations?
 - [ ] Add train tracks
 - [ ] MORE STUFF TODO!
