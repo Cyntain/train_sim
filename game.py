@@ -17,6 +17,9 @@ score = 0
 ranY = random.randint(0,MAPHEIGHT)
 ranX = random.randint(0,MAPWIDTH)
 
+# For the tile prompt
+tileSTR = "TEST"
+
 def main():
     def updateScore(action, amount):
         """
@@ -115,7 +118,8 @@ def main():
                 mousex, mousey = event.pos                                                                   # Sets the mouse pos into mousex and mousey
                 mousex = int(mousex/TILESIZE)                                                               # converts the mousex into tile size
                 mousey = int(mousey/TILESIZE)                                                               # converts the mousey into tile size
-                currentTile = tilemap[cursorPos[1]][cursorPos[0]]                                       # Saves the tile that is clicked into this var
+                currentTile = tilemap[cursorPos[1]][cursorPos[0]]                               # Saves the tile that is clicked into this var
+                
                 if mousex > 0 and mousex <= MAPWIDTH:                                   # checks if the mouse pos is within the screen on the x axis
                     cursorPos[0] = mousex                                                                          # sets the mouse x into the list of cursorPos
                 else:
@@ -134,7 +138,7 @@ def main():
                 mousex, mousey = event.pos                                                               # Saves the Pos of the mouse in mousex and mousey
                 mousex = int(mousex/TILESIZE)                                                           # converts the mousex into tile size
                 mousey = int(mousey/TILESIZE)                                                           # converts the mousey into tile size
-                tileChosen = selectTile(mouseClicked)
+                tileChosen = selectTile(mouseClicked) 
                 
                 if tileChosen == False:
                     if mousex > 0 and mousex <= MAPWIDTH :                             # checks if the mouse pos is within the screen on the x axis
@@ -160,6 +164,20 @@ def main():
         # Draws text on to the screen
         textScore = FONT.render("SCORE: " + str(score), True, WHITE, BLACK)                      # Creates a textScore to be prep'ed to drawn onto the screen
         DISPLAY.blit(textScore, (5, MAPHEIGHT*TILESIZE + 20))                                           # draws the textScore onto the screen
+
+        # Tells the player what tile they have clicked on
+        textTileTemp = tilemap[cursorPos[1]][cursorPos[0]]
+        if textTileTemp == 0:
+            tileSTR = "GRASS    "
+        elif textTileTemp == 1:
+            tileSTR = "WATER    "
+        elif textTileTemp == 2:
+            tileSTR = "STATION"
+        else:
+            tileSTR = "ERROR"
+                
+        textTile = FONT.render(tileSTR, True, WHITE, BLACK)
+        DISPLAY.blit(textTile, (MAPWIDTH*TILESIZE - 75,MAPHEIGHT*TILESIZE + 20 ))
 
         pygame.display.update()                                                                                         # update the screen for all the drawings
         
