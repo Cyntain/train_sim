@@ -25,7 +25,7 @@ class Map(object):
         self.resourceName = ["Grass", "Water", "Station"]
         
         self.tilemap = [[self.GRASS for w in range(self.MAPWIDTH + 1)] for h in range(self.MAPHEIGHT + 1)]
- 
+         
     def populateMap(self):       
         for rw in range(self.MAPHEIGHT):
             for cl in range(self.MAPWIDTH):
@@ -49,7 +49,6 @@ class Map(object):
 
 if __name__ == '__main__':
     print("Module was run directly and not imported into a main class")
-    landscape = Map(40, 30)
-    landscape.populateMap()
+
 
     

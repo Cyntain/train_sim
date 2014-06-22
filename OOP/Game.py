@@ -4,7 +4,6 @@
 import pygame, Map
 from pygame.locals import *
 
-
 class Game(object):
 
     def __init__(self, MAPWIDTH, MAPHEIGHT, TILESIZE):
@@ -19,6 +18,9 @@ class Game(object):
         
         self.CURSOR = pygame.image.load("cursor.png") # Needs to be changed to look in a new dir
         self.FONT = pygame.font.Font(None, 18)
+        print(Map)
+        world = Map(30, 40)
+        print(World)
         
     def updateScreen(self):
         """ Updates the screen for drawing """
@@ -26,6 +28,6 @@ class Game(object):
 
 if __name__ == '__main__':
     print("Module was run directly and not imported into a main class")
-    game = Game(40, 30, 30)
+
     
     
