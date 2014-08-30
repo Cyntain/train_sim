@@ -12,6 +12,7 @@ TILESIZE = 30
 GRASS = 0
 WATER = 1
 STATION = 2
+TRACK_UP = 3
 
 score = 0
 ranY = random.randint(0,MAPHEIGHT)
@@ -46,6 +47,8 @@ def main():
             print("THIS IS GRASS")
         elif currentTile == WATER:
             print("THIS IS WATER")
+        elif currentTile == TRACK_UP:
+            print("THIS IS THE TRACK UP")
         else:
             print("Unknown Tile! ERROR: ", currentTile)
 
@@ -67,7 +70,7 @@ def main():
     FONT = pygame.font.Font(None, 18)                                                                                    # init the font for the screen
 
     playerPos = [0,0]                                                                                                               # List of the player coord x, y
-    cursorPos = [0, 0]                                                                                                              # List of the cursor coord x, y
+    cursorPos = [0,0]                                                                                                              # List of the cursor coord x, y
     mousex = 0                                                                                                                      # x coord of the mouse
     mousey = 0                                                                                                                      # y coord of the mouse
     mouseClicked = 1
@@ -76,11 +79,12 @@ def main():
     textures = {
                             GRASS : pygame.image.load("grass.png"),
                             WATER : pygame.image.load("water.png"),
-                            STATION : pygame.image.load("station.png")
+                            STATION : pygame.image.load("station.png"),
+                            TRACK_UP : pygame.image.load("track_straight.png")
                             }
 
-    resources = [GRASS, WATER, STATION]                                                                 # List of all resources that can be generated
-    resourceName = ["Grass", "Water", "Station"]                                                            # Lists all of the resources names
+    resources = [GRASS, WATER, STATION, TRACK_UP]                                     # List of all resources that can be generated
+    resourceName = ["Grass", "Water", "Station", "Track"]                                        # Lists all of the resources names
     tilemap = [[GRASS for w in range(MAPWIDTH + 1)] for h in range(MAPHEIGHT + 1)]    # Create the tile map with just GRASS in it
 
     for rw in range(MAPHEIGHT):                                              # Check through the y axis
