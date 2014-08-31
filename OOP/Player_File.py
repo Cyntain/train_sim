@@ -3,7 +3,7 @@ class Player(object):
         self.MAPWIDTH = MAPWIDTH
         self.MAPHEIGHT = MAPHEIGHT
         self.TILESIZE = TILESIZE
-        self.player_pos = [ 0, 0 ]
+        self.player_pos = [ 4, 2 ]
         self.player_score = 0
         
     def player_movement(self, direction="up", amount=1):
