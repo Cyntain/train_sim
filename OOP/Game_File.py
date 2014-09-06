@@ -39,6 +39,9 @@ if __name__ == "__main__":
     world = World(MAPWIDTH, MAPHEIGHT, TILESIZE)
     player = Player(MAPWIDTH, MAPHEIGHT, TILESIZE)
     
+    screen_y = camera_pos[0] + 10
+    screen_x = camera_pos[1] + 10
+    
     wolf = WolfSprite([TILESIZE, TILESIZE])
     enitity_list = pygame.sprite.Group()
     enitity_list.add(wolf)
@@ -49,9 +52,6 @@ if __name__ == "__main__":
     
 ## MAIN GAME LOOP
     while True:
-        screen_y = camera_pos[0] + 10
-        screen_x = camera_pos[1] + 10
-        
 ## Game controls
         for event in pygame.event.get():
             if event.type == QUIT:                                                    
@@ -63,14 +63,18 @@ if __name__ == "__main__":
                     pygame.quit()
                     sys.exit()
                     
-                if event.key == K_RIGHT and camera_pos[1] < MAPWIDTH :
-                    camera_pos[1] += 1                                                                       
+                if event.key == K_RIGHT and camera_pos[1] < MAPWIDTH - 1:
+                    camera_pos[1] += 1
+                    player.player_pos[0] += 1
                 if event.key == K_LEFT and camera_pos[1] > 0:
-                    camera_pos[1] -= 1                                                                           
+                    camera_pos[1] -= 1
+                    player.player_pos[0] -= 1
                 if event.key == K_UP and camera_pos[0] > 0:                                          
-                    camera_pos[0] -= 1                                                                        
-                if event.key == K_DOWN and camera_pos[0] < MAPHEIGHT:             
+                    camera_pos[0] -= 1
+                    player.player_pos[1] -= 1
+                if event.key == K_DOWN and camera_pos[0] < MAPHEIGHT - 1:             
                     camera_pos[0] += 1
+                    player.player_pos[1] += 1
                     
 ## Drawning to the screen
         game.DISPLAY.fill(BLACK) # Fill black to reset the screen 
@@ -82,10 +86,12 @@ if __name__ == "__main__":
                 except IndexError:
                     pass
 
-        game.DISPLAY.blit(wolf.image, (TILESIZE // 4, TILESIZE // 4))
+        game.DISPLAY.blit(wolf.image, (TILESIZE * 4, TILESIZE * 2.5))
         
         txt_score = FONT.render("Player Score: " + str(player.player_score), True, WHITE)
-        txt_player_pos = FONT.render("Player Pos: " + str(camera_pos), True, WHITE)
+        txt_camera_pos = FONT.render("Camera Pos: " + str(camera_pos), True, WHITE)
+        txt_player_pos = FONT.render("player Pos: " + str(player.player_pos), True, WHITE)
         game.DISPLAY.blit(txt_score, (5,  5))
         game.DISPLAY.blit(txt_player_pos, ( 150, 5))
+        game.DISPLAY.blit(txt_camera_pos, ( 300, 5))
         pygame.display.update()
